@@ -1,16 +1,19 @@
 import pandas as pd
 quiz_data = pd.read_csv('./quiz_data.csv')
 
-freq = pd.crosstab("Yes", quiz_data.Insurance, normalize='index')
+freq = pd.crosstab("Νο", quiz_data.Insurance, normalize='index')
 print(freq) #GINI of total data is 0.5
 
 #SEX
 absfreq = pd.crosstab(quiz_data.Sex, quiz_data.Insurance)
+# print(absfreq)
 freq = pd.crosstab(quiz_data.Sex, quiz_data.Insurance, normalize='index')
+# print(freq)
 GINI_Sex_Male = 1 - freq.loc["M", "No"]**2 - freq.loc["M", "Yes"]**2
 #print(GINI_Sex_Male)
 GINI_Sex_Female = 1 - freq.loc["F", "No"]**2 - freq.loc["F", "Yes"]**2
 freqSum = pd.crosstab(quiz_data.Sex, quiz_data.Insurance, normalize='all').sum(axis=1)
+# print(freqSum)
 
 GINI_Sex = freqSum.loc["F"]*GINI_Sex_Female + freqSum.loc["M"]*GINI_Sex_Male
 print(GINI_Sex)
