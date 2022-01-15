@@ -14,8 +14,9 @@ plt.show()
 
 # scaler = StandardScaler()
 # scaler = scaler.fit(data)
-# data = pd.DataFrame(scaler.transform(data))
-# target = pd.DataFrame(scaler.transform(target))
+# data = pd.DataFrame(scaler.transform(data), columns=data.columns, index=data.index)
+# print(data)
+# # target = pd.DataFrame(scaler.transform(target))
 
 auc = []
 
